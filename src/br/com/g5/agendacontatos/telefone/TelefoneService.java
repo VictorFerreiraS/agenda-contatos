@@ -1,7 +1,6 @@
 package br.com.g5.agendacontatos.telefone;
 
 import br.com.g5.agendacontatos.contato.Contato;
-import br.com.g5.agendacontatos.util.Verificador;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +9,6 @@ public class TelefoneService extends Telefone{
 
     Scanner sc = new Scanner(System.in);
     public Telefone requisitarTelefoneNoTerminal(List<Contato> contatos) {
-        Boolean validacao = true;
         Telefone telefone = new Telefone();
         System.out.println("Digite o numero de telefone:");
         String numero = sc.next();

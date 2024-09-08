@@ -62,6 +62,7 @@ public class AgendaService extends Agenda{
         for (Contato contato : getContatos()) {
             if (contato.getNumeroTelefone().equals(telefone)) {
                 contatoService.adicionarFilmeEmContato(contato);
+                break;
             }
         }
 

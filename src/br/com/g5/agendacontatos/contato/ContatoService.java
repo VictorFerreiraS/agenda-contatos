@@ -2,6 +2,7 @@ package br.com.g5.agendacontatos.contato;
 
 import br.com.g5.agendacontatos.filme.FilmeService;
 import br.com.g5.agendacontatos.telefone.TelefoneService;
+import br.com.g5.agendacontatos.util.Verificador;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,11 +21,18 @@ public class ContatoService extends  Contato{
         System.out.println("Digite o endereço: ");
         contato.setEndereco(sc.nextLine());
         System.out.println("Digite o e-mail: ");
-        contato.setEmail(sc.nextLine());
+        String email = sc.nextLine();
+        do {
+            if (!Verificador.emailIsValido(email)) {
+                System.out.print("Formato inválido, tente novamente: ");
+                email = sc.nextLine();
+            }
+        } while (!Verificador.emailIsValido(email));
+        contato.setEmail(email);
 
 
-            System.out.println("Contato salvo com sucesso");
-            return  contato;
+        System.out.println("Contato salvo com sucesso");
+        return  contato;
     }
 
 
@@ -42,7 +50,7 @@ public class ContatoService extends  Contato{
     }
 
     public void adicionarFilmeEmContato(Contato contato) {
-        contato.cadastrarFilme(filmeService.requisitarFilmeNoTerminal());
+        contato.cadastrarFilme(filmeService.requisitarFilmeNoTerminal(contato.getListaFilmes()));
     }
 
 }

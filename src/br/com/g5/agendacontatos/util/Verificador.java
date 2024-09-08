@@ -7,16 +7,7 @@ import java.util.function.Predicate;
 
 public class Verificador {
 
-    public static <T> boolean isDuplicado(List<T> lista, Predicate<T> predicado){
-        for (T t : lista) {
-            if (predicado.test(t)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static <T> boolean isDuplicated(List<T> lista,T t) {
+    public static <T> boolean isDuplicado(List<T> lista,T t) {
         return lista.stream().anyMatch(x->x.equals(t));
     }
 
